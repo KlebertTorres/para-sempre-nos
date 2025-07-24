@@ -7,11 +7,12 @@ body {
   overflow-x: hidden;
   position: relative;
   padding: 0 10px;
+  box-sizing: border-box;
 }
 
 /* Título com efeito gradiente animado */
 h1 {
-  font-size: 2.2em;
+  font-size: 2em;
   margin-top: 20px;
   background: linear-gradient(45deg, #d6336c, #ff8fab, #d6336c);
   -webkit-background-clip: text;
@@ -59,26 +60,28 @@ h1 {
   width: 100%;
   max-width: 900px;
   margin: 20px auto;
-  overflow: hidden;
-  position: relative;
-  border-radius: 15px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
 .carousel {
   display: flex;
-  transition: transform 0.8s ease;
+  gap: 10px;
+  scroll-snap-align: start;
 }
 
 .carousel img {
-  flex: 0 0 100%;
-  max-width: 100%;
+  flex: 0 0 auto;
+  width: 90%;
+  max-width: 300px;
   height: auto;
   border-radius: 10px;
-  margin: 0;
+  margin: 0 auto;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Nova frase */
+/* Frase extra */
 .frase-extra {
   font-size: 1.2em;
   font-weight: bold;
@@ -87,7 +90,7 @@ h1 {
   padding: 0 5px;
 }
 
-/* Seção mensagem + imagem */
+/* Seção momento (texto + imagem) */
 .momento {
   display: flex;
   flex-direction: column;
@@ -99,12 +102,13 @@ h1 {
   background: rgba(255, 240, 245, 0.8);
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
 .momento-texto {
   font-size: 1em;
+  line-height: 1.5;
   text-align: justify;
-  line-height: 1.4;
 }
 
 .momento-imagem img {
@@ -114,7 +118,7 @@ h1 {
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* Nova caixa de texto */
+/* Caixa de texto adicional */
 .mensagem-extra {
   max-width: 900px;
   margin: 20px auto;
@@ -122,12 +126,12 @@ h1 {
   background: rgba(255, 240, 245, 0.8);
   border-radius: 15px;
   font-size: 1em;
-  line-height: 1.4;
+  line-height: 1.5;
   text-align: justify;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Corações e flores laterais */
+/* Decorações */
 .decor {
   position: fixed;
   top: 0;
@@ -172,10 +176,32 @@ h1 {
   100% { transform: translateY(-10vh); opacity: 0; }
 }
 
-/* Ajustes para telas maiores */
+/* Melhorias para telas maiores */
 @media (min-width: 768px) {
-  h1 { font-size: 2.8em; }
-  .carousel img { flex: 0 0 33.33%; max-width: 33.33%; }
-  .momento { flex-direction: row; text-align: left; }
-  .momento-texto { flex: 1; }
+  h1 {
+    font-size: 2.8em;
+  }
+
+  .carousel img {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+  }
+
+  .momento {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .momento-texto {
+    flex: 1;
+    padding-right: 15px;
+  }
+
+  .momento-imagem {
+    flex: 1;
+  }
+
+  .mensagem-extra {
+    font-size: 1.1em;
+  }
 }
