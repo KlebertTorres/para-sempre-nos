@@ -1,0 +1,181 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #ffe4ec, #fff0f5);
+  color: #d6336c;
+  text-align: center;
+  overflow-x: hidden;
+  position: relative;
+  padding: 0 10px;
+}
+
+/* Título com efeito gradiente animado */
+h1 {
+  font-size: 2.2em;
+  margin-top: 20px;
+  background: linear-gradient(45deg, #d6336c, #ff8fab, #d6336c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 4s infinite linear, glow 1.5s infinite alternate;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 5px #ffccd5, 0 0 10px #ff99ac; }
+  to { text-shadow: 0 0 20px #ff80ab, 0 0 30px #ff4d6d; }
+}
+
+/* Caixa da música */
+.caixa-musica {
+  margin: 15px auto;
+  background: rgba(255, 240, 245, 0.85);
+  padding: 10px 15px;
+  border-radius: 12px;
+  max-width: 350px;
+  font-size: 1em;
+}
+
+.caixa-musica button {
+  margin-top: 10px;
+  background: #d6336c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 15px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.caixa-musica button:hover {
+  background: #ff4d6d;
+}
+
+/* Container do carrossel */
+.carousel-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.8s ease;
+}
+
+.carousel img {
+  flex: 0 0 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Nova frase */
+.frase-extra {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 20px auto;
+  color: #b3244c;
+  padding: 0 5px;
+}
+
+/* Seção mensagem + imagem */
+.momento {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 15px;
+  background: rgba(255, 240, 245, 0.8);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.momento-texto {
+  font-size: 1em;
+  text-align: justify;
+  line-height: 1.4;
+}
+
+.momento-imagem img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Nova caixa de texto */
+.mensagem-extra {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 15px;
+  background: rgba(255, 240, 245, 0.8);
+  border-radius: 15px;
+  font-size: 1em;
+  line-height: 1.4;
+  text-align: justify;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Corações e flores laterais */
+.decor {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heart, .flower {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: pink;
+  transform: rotate(45deg);
+  animation: float 12s linear infinite;
+  opacity: 0.6;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: pink;
+  border-radius: 50%;
+}
+
+.heart::before { top: -10px; left: 0; }
+.heart::after { left: -10px; top: 0; }
+
+.flower {
+  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Pink_rose_icon.svg/1024px-Pink_rose_icon.svg.png') no-repeat center;
+  background-size: cover;
+  border-radius: 50%;
+  transform: rotate(0);
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh); opacity: 0.6; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* Ajustes para telas maiores */
+@media (min-width: 768px) {
+  h1 { font-size: 2.8em; }
+  .carousel img { flex: 0 0 33.33%; max-width: 33.33%; }
+  .momento { flex-direction: row; text-align: left; }
+  .momento-texto { flex: 1; }
+}
