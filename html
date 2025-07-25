@@ -5,24 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Para Sempre Nós 💖</title>
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to bottom, #ffe4ec, #fff0f5);
       overflow-x: hidden;
-      overflow-y: hidden;
-      position: relative;
       color: #d6336c;
       text-align: center;
-      height: 100vh;
     }
 
     h1 {
       font-size: 2.5em;
       margin-top: 30px;
       animation: fadeInDown 2s ease;
-      z-index: 1;
-      position: relative;
     }
 
     @keyframes fadeInDown {
@@ -30,30 +26,25 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .carousel {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  margin-top: 20px;
-  position: relative;
-  z-index: 1;
-}
+    .carousel-container {
+      overflow-x: hidden;
+      width: 100vw;
+    }
 
+    .carousel {
+      display: flex;
+      scroll-snap-type: x mandatory;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      width: 100vw;
+    }
 
     .carousel img {
-  width: 100vw;
-  height: auto;
-  border-radius: 0;
-  scroll-snap-align: start;
-  flex-shrink: 0;
-  box-shadow: none;
-  transition: transform 0.3s;
-}
-
-
-    .carousel img:hover {
-      transform: scale(1.05);
+      width: 100vw;
+      height: auto;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      object-fit: cover;
     }
 
     .mensagem {
@@ -61,20 +52,10 @@
       padding: 20px;
       max-width: 90%;
       margin: 0 auto;
-      animation: fadeIn 3s ease;
-      z-index: 1;
-      position: relative;
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(10px); }
-      100% { opacity: 1; transform: translateY(0); }
     }
 
     .audio {
       margin: 30px auto;
-      z-index: 1;
-      position: relative;
     }
 
     .digitar {
@@ -98,7 +79,7 @@
       50% { border-color: pink; }
     }
 
-    /* Corações flutuando */
+    /* Corações flutuantes */
     .hearts {
       position: fixed;
       top: 0;
@@ -150,11 +131,6 @@
         opacity: 0;
       }
     }
-
-    .audio audio {
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255, 192, 203, 0.4);
-    }
   </style>
 </head>
 <body>
@@ -169,10 +145,13 @@
 
   <h1>❤ Amanda & João ❤</h1>
 
-  <div class="carousel">
-    <img src="https://via.placeholder.com/250x300?text=Foto+1" alt="Foto 1" />
-    <img src="https://via.placeholder.com/250x300?text=Foto+2" alt="Foto 2" />
-    <img src="https://via.placeholder.com/250x300?text=Foto+3" alt="Foto 3" />
+  <!-- Carrossel -->
+  <div class="carousel-container">
+    <div class="carousel">
+      <img src="https://via.placeholder.com/600x800?text=Foto+1" alt="Foto 1" />
+      <img src="https://via.placeholder.com/600x800?text=Foto+2" alt="Foto 2" />
+      <img src="https://via.placeholder.com/600x800?text=Foto+3" alt="Foto 3" />
+    </div>
   </div>
 
   <div class="mensagem digitar">
