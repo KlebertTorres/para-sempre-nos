@@ -1,4 +1,3 @@
-/* Estilos gerais */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -14,7 +13,6 @@ body {
   word-wrap: break-word;
 }
 
-/* Título com efeito gradiente animado */
 h1 {
   font-size: 2.2em;
   margin-top: 20px;
@@ -34,7 +32,6 @@ h1 {
   to { text-shadow: 0 0 20px #ff80ab, 0 0 30px #ff4d6d; }
 }
 
-/* Caixa da música */
 .caixa-musica {
   margin: 15px auto;
   background: rgba(255, 240, 245, 0.85);
@@ -59,7 +56,6 @@ h1 {
   background: #ff4d6d;
 }
 
-/* Container do carrossel */
 .carousel-container {
   width: 100%;
   max-width: 900px;
@@ -73,27 +69,23 @@ h1 {
 
 .carousel {
   display: flex;
-  gap: 10px;
+  gap: 0;
 }
 
 .carousel img {
-  flex: 0 0 auto;
+  flex: 0 0 100%;
   width: 100%;
-  max-width: 300px;
-  aspect-ratio: 3 / 4;
+  height: 100vh;
   object-fit: cover;
-  height: auto;
-  border-radius: 10px;
-  margin: 0 auto;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   scroll-snap-align: center;
   transition: transform 0.3s ease;
+  border-radius: 0;
+  will-change: transform;
 }
 .carousel img:active {
   transform: scale(0.98);
 }
 
-/* Nova frase */
 .frase-extra {
   font-size: 1.2em;
   font-weight: bold;
@@ -102,7 +94,6 @@ h1 {
   padding: 0 5px;
 }
 
-/* Seção mensagem + imagem */
 .momento {
   display: flex;
   flex-direction: column;
@@ -131,7 +122,6 @@ h1 {
   aspect-ratio: 3 / 4;
 }
 
-/* Nova caixa de texto */
 .mensagem-extra {
   max-width: 900px;
   margin: 20px auto;
@@ -144,7 +134,6 @@ h1 {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Corações e flores laterais */
 .decor {
   position: fixed;
   top: 0;
@@ -189,13 +178,13 @@ h1 {
   100% { transform: translateY(-10vh); opacity: 0; }
 }
 
-/* Ajustes para telas médias e grandes */
 @media (min-width: 768px) {
   h1 { font-size: 2.8em; }
 
   .carousel img {
     flex: 0 0 33.33%;
-    max-width: 33.33%;
+    height: auto;
+    border-radius: 10px;
   }
 
   .momento {
@@ -217,7 +206,6 @@ h1 {
   }
 }
 
-/* Ajustes extras para celulares menores */
 @media (max-width: 500px) {
   h1 {
     font-size: 1.8em;
@@ -229,7 +217,8 @@ h1 {
   }
 
   .carousel img {
-    max-width: 85%;
+    max-width: 100%;
+    height: 100vh;
   }
 
   .momento, .mensagem-extra {
