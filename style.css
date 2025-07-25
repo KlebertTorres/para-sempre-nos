@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
+  font-size: 16px; /* Fonte padrão para celular */
   background: linear-gradient(to bottom, #ffe4ec, #fff0f5);
   color: #d6336c;
   text-align: center;
@@ -12,7 +13,7 @@ body {
 
 /* Título com efeito gradiente animado */
 h1 {
-  font-size: 2em;
+  font-size: 2.2em;
   margin-top: 20px;
   background: linear-gradient(45deg, #d6336c, #ff8fab, #d6336c);
   -webkit-background-clip: text;
@@ -73,15 +74,17 @@ h1 {
 
 .carousel img {
   flex: 0 0 auto;
-  width: 90%;
+  width: 100%;
   max-width: 300px;
+  aspect-ratio: 3 / 4; /* Corrige achatamento */
+  object-fit: cover;   /* Mantém proporção e recorta bem */
   height: auto;
   border-radius: 10px;
   margin: 0 auto;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Frase extra */
+/* Nova frase */
 .frase-extra {
   font-size: 1.2em;
   font-weight: bold;
@@ -90,7 +93,7 @@ h1 {
   padding: 0 5px;
 }
 
-/* Seção momento (texto + imagem) */
+/* Seção mensagem + imagem */
 .momento {
   display: flex;
   flex-direction: column;
@@ -102,13 +105,12 @@ h1 {
   background: rgba(255, 240, 245, 0.8);
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  text-align: center;
 }
 
 .momento-texto {
   font-size: 1em;
-  line-height: 1.5;
   text-align: justify;
+  line-height: 1.4;
 }
 
 .momento-imagem img {
@@ -116,9 +118,11 @@ h1 {
   max-width: 350px;
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  object-fit: cover;
+  aspect-ratio: 3 / 4;
 }
 
-/* Caixa de texto adicional */
+/* Nova caixa de texto */
 .mensagem-extra {
   max-width: 900px;
   margin: 20px auto;
@@ -126,12 +130,12 @@ h1 {
   background: rgba(255, 240, 245, 0.8);
   border-radius: 15px;
   font-size: 1em;
-  line-height: 1.5;
+  line-height: 1.4;
   text-align: justify;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Decorações */
+/* Corações e flores laterais */
 .decor {
   position: fixed;
   top: 0;
@@ -176,11 +180,9 @@ h1 {
   100% { transform: translateY(-10vh); opacity: 0; }
 }
 
-/* Melhorias para telas maiores */
+/* Ajustes para telas maiores */
 @media (min-width: 768px) {
-  h1 {
-    font-size: 2.8em;
-  }
+  h1 { font-size: 2.8em; }
 
   .carousel img {
     flex: 0 0 33.33%;
