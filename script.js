@@ -1,12 +1,13 @@
 <script>
-  const carousel = document.getElementById("carousel");
-  const slides = document.querySelectorAll("#carousel img");
-  let index = 0;
+ function scrollCarousel(direction) {
+  const container = document.querySelector('.carousel-container');
+  const itemWidth = container.querySelector('img').offsetWidth + 15; // largura + gap
+  container.scrollBy({
+    left: direction * itemWidth,
+    behavior: 'smooth'
+  });
+}
 
-  function slideShow() {
-    index = (index + 1) % slides.length;
-    carousel.style.transition = "transform 0.6s ease-in-out";
-    carousel.style.transform = `translateX(-${index * 100}%)`;
   }
   function tocarMusica() {
     const audio = document.getElementById("musica");
