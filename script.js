@@ -8,6 +8,14 @@
     carousel.style.transition = "transform 0.6s ease-in-out";
     carousel.style.transform = `translateX(-${index * 100}%)`;
   }
+  function tocarMusica() {
+    const audio = document.getElementById("musica");
+    audio.play().then(() => {
+      console.log("Música iniciada com sucesso");
+    }).catch((error) => {
+      console.error("Erro ao tentar tocar a música:", error);
+    });
+  }
 
   setInterval(slideShow, 3000); // Troca a cada 3 segundos
 </script>
