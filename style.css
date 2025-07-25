@@ -1,3 +1,4 @@
+/* === Estilo Geral === */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -6,8 +7,7 @@ body {
   color: #d6336c;
   text-align: center;
   overflow-x: hidden;
-  position: relative;
-  padding: 0;
+  padding: 0 10px;
   box-sizing: border-box;
   line-height: 1.6;
   word-wrap: break-word;
@@ -32,33 +32,7 @@ h1 {
   to { text-shadow: 0 0 20px #ff80ab, 0 0 30px #ff4d6d; }
 }
 
-/* ===== CARROSSEL ATUALIZADO: 1 imagem por vez, menor e centralizada ===== */
-.carousel-container {
-  width: 100vw;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  padding: 10px 0;
-}
-
-.carousel {
-  display: flex;
-  gap: 10px;
-  padding: 0 10px;
-}
-
-.carousel img {
-  width: 90vw;
-  height: 75vh;
-  object-fit: cover;
-  flex-shrink: 0;
-  scroll-snap-align: center;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Caixa da música */
+/* Música */
 .caixa-musica {
   margin: 15px auto;
   background: rgba(255, 240, 245, 0.85);
@@ -83,7 +57,51 @@ h1 {
   background: #ff4d6d;
 }
 
-/* Frase extra */
+/* === NOVO BLOCO: Carrossel + Momento Especial === */
+.destaque-completo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 10px;
+}
+
+@media (min-width: 768px) {
+  .destaque-completo {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+/* Carrossel em quadrados */
+.carousel-container {
+  flex: 1;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 10px;
+}
+
+.carousel {
+  display: flex;
+  gap: 15px;
+  padding-bottom: 5px;
+}
+
+.carousel img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: #fff;
+}
+
+/* Frase */
 .frase-extra {
   font-size: 1.2em;
   font-weight: bold;
@@ -92,18 +110,17 @@ h1 {
   padding: 0 5px;
 }
 
-/* Seção com imagem + texto */
+/* Momento especial (alinhado com carrossel) */
 .momento {
+  flex: 1;
+  background: rgba(255, 240, 245, 0.9);
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 15px;
-  background: rgba(255, 240, 245, 0.8);
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .momento-texto {
@@ -114,14 +131,14 @@ h1 {
 
 .momento-imagem img {
   width: 100%;
-  max-width: 350px;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  max-width: 250px;
+  border-radius: 10px;
   object-fit: cover;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 1 / 1.2;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Mensagem final */
+/* Texto final */
 .mensagem-extra {
   max-width: 900px;
   margin: 20px auto;
@@ -179,29 +196,6 @@ h1 {
   100% { transform: translateY(-10vh); opacity: 0; }
 }
 
-/* Telas maiores (desktop) */
-@media (min-width: 768px) {
-  h1 { font-size: 2.8em; }
-
-  .momento {
-    flex-direction: row;
-    text-align: left;
-  }
-
-  .momento-texto {
-    flex: 1;
-    padding-right: 15px;
-  }
-
-  .momento-imagem {
-    flex: 1;
-  }
-
-  .mensagem-extra {
-    font-size: 1.1em;
-  }
-}
-
 /* Ajustes para telas pequenas */
 @media (max-width: 500px) {
   h1 {
@@ -213,11 +207,12 @@ h1 {
     padding: 10px;
   }
 
-  .momento, .mensagem-extra {
-    padding: 10px;
-  }
-
   .momento-texto {
     font-size: 0.95em;
+  }
+
+  .mensagem-extra,
+  .momento {
+    padding: 10px;
   }
 }
