@@ -1,4 +1,4 @@
-/* === Estilo Geral === */
+/* Reset e base */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -7,12 +7,12 @@ body {
   color: #d6336c;
   text-align: center;
   overflow-x: hidden;
-  padding: 0 10px;
   box-sizing: border-box;
+  padding: 0 10px;
   line-height: 1.6;
-  word-wrap: break-word;
 }
 
+/* Título animado */
 h1 {
   font-size: 2.2em;
   margin-top: 20px;
@@ -57,26 +57,15 @@ h1 {
   background: #ff4d6d;
 }
 
-/* === NOVO BLOCO: Carrossel + Momento Especial === */
-.destaque-completo {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 900px;
-  margin: 30px auto;
-  padding: 10px;
+/* Carrossel */
+.carousel-wrapper {
+  position: relative;
+  max-width: 90vw;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 
-@media (min-width: 768px) {
-  .destaque-completo {
-    flex-direction: row;
-    align-items: flex-start;
-  }
-}
-
-/* Carrossel em quadrados */
 .carousel-container {
-  flex: 1;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -87,55 +76,82 @@ h1 {
 .carousel {
   display: flex;
   gap: 15px;
-  padding-bottom: 5px;
+  padding: 10px 0;
 }
 
 .carousel img {
-  width: 220px;
-  height: 220px;
+  width: 250px;
+  height: 250px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 15px;
+  scroll-snap-align: center;
   flex-shrink: 0;
-  scroll-snap-align: start;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Setas indicadoras */
+.seta-esquerda,
+.seta-direita {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: #d6336c;
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  padding: 5px 10px;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.seta-esquerda { left: -10px; }
+.seta-direita { right: -10px; }
+
+@media (max-width: 600px) {
+  .seta-esquerda,
+  .seta-direita {
+    display: none;
+  }
 }
 
 /* Frase */
 .frase-extra {
   font-size: 1.2em;
   font-weight: bold;
-  margin: 20px auto;
+  margin: 25px auto;
   color: #b3244c;
-  padding: 0 5px;
+  padding: 0 10px;
 }
 
-/* Momento especial (alinhado com carrossel) */
+/* Momento especial */
 .momento {
-  flex: 1;
-  background: rgba(255, 240, 245, 0.9);
-  padding: 15px;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 15px;
+  background: rgba(255, 240, 245, 0.8);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .momento-texto {
   font-size: 1em;
   text-align: justify;
   line-height: 1.4;
+  color: #8b1c3f;
 }
 
 .momento-imagem img {
   width: 100%;
-  max-width: 250px;
-  border-radius: 10px;
+  max-width: 300px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   object-fit: cover;
-  aspect-ratio: 1 / 1.2;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  aspect-ratio: 3 / 4;
 }
 
 /* Texto final */
@@ -148,10 +164,11 @@ h1 {
   font-size: 1em;
   line-height: 1.4;
   text-align: justify;
+  color: #6a1b3a;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Elementos decorativos */
+/* Efeitos decorativos */
 .decor {
   position: fixed;
   top: 0;
@@ -196,23 +213,32 @@ h1 {
   100% { transform: translateY(-10vh); opacity: 0; }
 }
 
-/* Ajustes para telas pequenas */
-@media (max-width: 500px) {
-  h1 {
-    font-size: 1.8em;
-  }
+/* Responsivo */
+@media (min-width: 768px) {
+  h1 { font-size: 2.8em; }
 
-  .caixa-musica {
-    font-size: 0.95em;
-    padding: 10px;
+  .momento {
+    flex-direction: row;
+    text-align: left;
   }
 
   .momento-texto {
-    font-size: 0.95em;
+    flex: 1;
+    padding-right: 15px;
   }
 
-  .mensagem-extra,
-  .momento {
-    padding: 10px;
+  .momento-imagem {
+    flex: 1;
   }
+
+  .mensagem-extra {
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 500px) {
+  h1 { font-size: 1.8em; }
+  .caixa-musica { font-size: 0.95em; padding: 10px; }
+  .momento, .mensagem-extra { padding: 10px; }
+  .momento-texto { font-size: 0.95em; }
 }
